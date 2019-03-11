@@ -8,6 +8,7 @@ import Info from './components/Info';
 import Time from './components/Time';
 import BuddyInfo from './components/BuddyInfo';
 import Complete from './components/Complete';
+import BuddyVerify from './components/BuddyVerify'
 
 class App extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
         <Route path="/time" component={Time} />
         <Route path="/buddyinfo" component={BuddyInfo} />
         <Route path="/complete" component={Complete} />
+        <Route path="/verify" component={BuddyVerify} />
         </>
       </Router>
     );
