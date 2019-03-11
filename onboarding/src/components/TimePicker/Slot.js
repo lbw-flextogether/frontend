@@ -5,11 +5,11 @@ class Slot extends React.Component {
         clicked: false,
     }
 
-    handleClick = e => {
+    handleClick = () => {
         this.setState({
             clicked: !this.state.clicked
         })
-        this.props.selectTime(this.props.slot);
+        this.props.selectTime(this.props.day, this.props.slot, this.state.clicked);
     }
 
     render() {

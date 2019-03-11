@@ -16,14 +16,23 @@ class Time extends React.Component {
         }
     }
 
-    selectTime = (day, times) => {
+    selectTime = (day, time, clicked) => {
+        if (!clicked) {
+            this.setState({
+                selectedTimes: {
+                    ...this.state.selectedTimes,
+                    [day]: this.state.selectedTimes[day].filter(item => item !== time)
+                }
+            })
+        } else {
         this.setState({
             selectedTimes: {
                 ...this.state.selectedTimes,
-                [day]: times
+                [day]: [...this.state.selectedTimes[day], time]
             }
         })
-        console.log(this.state.selectedTimes);
+    }
+        console.log(day, time, clicked);
     }
 
     render() {
