@@ -6,6 +6,7 @@ import Welcome from './components/Welcome';
 import Start from './components/Start';
 import Info from './components/Info';
 import Time from './components/Time';
+import BuddyInfo from './components/BuddyInfo';
 
 class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class App extends React.Component {
         <Route path="/start" component={Start} />
         <Route path="/info" component={Info} />
         <Route path="/time" component={Time} />
+        <Route path="/buddyinfo" component={BuddyInfo} />
         </>
       </Router>
     );

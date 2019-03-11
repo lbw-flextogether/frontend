@@ -36,7 +36,7 @@ class Time extends React.Component {
 
     handleNext = e => {
         e.preventDefault();
-        this.props.history.push('/user2info')
+        this.props.history.push('/buddyinfo')
     }
 
     render() {
