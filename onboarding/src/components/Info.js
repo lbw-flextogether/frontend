@@ -32,7 +32,7 @@ class Info extends React.Component {
 
     handleNext = e => {
         e.preventDefault();
-        console.log(this.state.user)
+        this.props.history.push('/time')
     }
 
     render() {

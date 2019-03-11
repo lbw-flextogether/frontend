@@ -25,14 +25,18 @@ class Time extends React.Component {
                 }
             })
         } else {
-        this.setState({
-            selectedTimes: {
-                ...this.state.selectedTimes,
-                [day]: [...this.state.selectedTimes[day], time]
-            }
-        })
+            this.setState({
+                selectedTimes: {
+                    ...this.state.selectedTimes,
+                    [day]: [...this.state.selectedTimes[day], time]
+                }
+            })
+        }
     }
-        console.log(day, time, clicked);
+
+    handleNext = e => {
+        e.preventDefault();
+        this.props.history.push('/user2info')
     }
 
     render() {
@@ -48,7 +52,7 @@ class Time extends React.Component {
             <div className="days">
             {Object.keys(this.state.selectedTimes).map(day=><Day day={day} key={day} selectTime={this.selectTime} />)}
             </div>
-            <button>Next</button>
+            <button onClick={this.handleNext}>Next</button>
             </>
         );
     }
