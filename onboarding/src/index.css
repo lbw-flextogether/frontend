@@ -12,3 +12,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.days {
+  display: flex;
+}
+
+.time-slots {
+  height: 250px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.time-slots::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.selected-slot {
+  background: red;
+}
