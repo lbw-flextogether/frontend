@@ -32,7 +32,7 @@ class BuddyVerify extends React.Component {
 
     handleNext = e => {
         e.preventDefault();
-        this.props.history.push('/time')
+        this.props.history.push('/confirm')
     }
 
     render() {

@@ -6,9 +6,10 @@ import Welcome from './components/Welcome';
 import Start from './components/Start';
 import Info from './components/Info';
 import Time from './components/Time';
-import BuddyInfo from './components/BuddyInfo';
+import BuddyInfo from './components/Buddy/BuddyInfo';
 import Complete from './components/Complete';
-import BuddyVerify from './components/BuddyVerify'
+import BuddyVerify from './components/Buddy/BuddyVerify'
+import BuddyConfirm from './components/Buddy/BuddyConfirm'
 
 class App extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class App extends React.Component {
         <Route path="/buddyinfo" component={BuddyInfo} />
         <Route path="/complete" component={Complete} />
         <Route path="/verify" component={BuddyVerify} />
+        <Route path="/confirm" component={BuddyConfirm} />
         </>
       </Router>
     );
