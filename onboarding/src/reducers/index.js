@@ -3,6 +3,9 @@ import {
     ADD_INFO,
     ADD_TIMES,
     ADD_BUDDY,
+    POST_START,
+    POST_SUCCESS,
+    POST_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -18,6 +21,8 @@ const initialState = {
     recipient_phone_number: '',
     receipient_mobility_level: '',
     role: '',
+    posting: false,
+    error: '',
 }
 
 export const reducer = (state = initialState, action) => {
@@ -49,6 +54,23 @@ export const reducer = (state = initialState, action) => {
                recipient_email: action.payload.email,
                recipient_phone_number: action.payload.phone,
                receipient_mobility_level: action.payload.mobility,
+           }
+        case POST_START:
+           return {
+               ...state,
+               posting: true,
+           }
+        case POST_SUCCESS:
+           return {
+               ...state,
+               posting: false,
+               ...action.payload
+           }
+        case POST_FAILURE:
+           return {
+               ...state,
+               posting: false,
+               error: action.payload,
            }
         default:
             return state

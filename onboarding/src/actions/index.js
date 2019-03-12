@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 
 export const ADD_ROLE = "ADD_ROLE";
 
@@ -37,4 +37,19 @@ export const addBuddy = buddy => {
         type: ADD_BUDDY,
         payload: buddy,
     }
+}
+
+export const POST_START = "POST_START";
+export const POST_SUCCESS = "POST_SUCCESS";
+export const POST_FAILURE = "POST_FAILURE";
+
+export const postInfo = user => dispatch => {
+    dispatch({ type: POST_START })
+    axios.post('https://flextogether.herokuapp.com/api/invite/', user)
+        .then(res => {
+            dispatch({ type: POST_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            dispatch({ type: POST_FAILURE, payload: err })
+        })
 }
