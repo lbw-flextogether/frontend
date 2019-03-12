@@ -1,12 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Complete = props => {
-    return (
-        <>
-        <h2>Thanks! We've got all we need</h2>
-        <p>We'll reach out to your buddy and find a time that works for them and get back to you with an assigned time! We're excited for you to start moving!</p>
-        </>
-    );
+class Complete extends React.Component {
+    componentDidMount () {
+        console.log(this.props);
+    }
+    render() {
+        return (
+            <>
+            <h2>Thanks! We've got all we need</h2>
+            <p>We'll reach out to your buddy and find a time that works for them and get back to you with an assigned time! We're excited for you to start moving!</p>
+            </>
+        );
+    }
 }
 
-export default Complete
+const mapStateToProps = state => ({...state})
+
+export default connect(mapStateToProps, {  })(Complete)

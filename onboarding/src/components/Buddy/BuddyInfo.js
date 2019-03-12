@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addBuddy } from '../../actions';
 
 class BuddyInfo extends React.Component {
     state = {
@@ -6,7 +8,7 @@ class BuddyInfo extends React.Component {
             name: '',
             email: '',
             phone: '',
-            mobility: undefined,
+            mobility: null,
         }
     }
 
@@ -31,6 +33,7 @@ class BuddyInfo extends React.Component {
 
     handleNext = e => {
         e.preventDefault();
+        this.props.addBuddy(this.state.buddy)
         this.props.history.push('/complete')
     }
 
@@ -61,7 +64,7 @@ class BuddyInfo extends React.Component {
                     value={this.state.buddy.phone}
                     onChange={this.handleChanges} 
                 />
-                <label>I prefer to receive notifications by</label>
+                {/* <label>I prefer to receive notifications by</label>
                 <select 
                     value={this.state.buddy.notification} 
                     onChange={this.handleChanges} 
@@ -70,16 +73,20 @@ class BuddyInfo extends React.Component {
                     <option value="EmailAndText">Email & Text</option>
                     <option value="Email">Email Only</option>
                     <option value="Text">Text Message Only</option>
-                </select>
+                </select> */}
                 <p>Mobility Level (choose one)</p>
-                <button value="low" onClick={this.handleMobility}>Low</button>
-                <button value="medium" onClick={this.handleMobility}>Medium</button>
-                <button value="high" onClick={this.handleMobility}>High</button>
-                <button onClick={this.handleNext}>Next</button>
+                <div>
+                    <button value="low" onClick={this.handleMobility}>Low</button>
+                    <button value="medium" onClick={this.handleMobility}>Medium</button>
+                    <button value="high" onClick={this.handleMobility}>High</button>
+                </div>
+                {this.state.buddy.mobility ?
+                <button onClick={this.handleNext}>Next</button> :
+                null}
             </form>
             </>
         );
     }
 }
 
-export default BuddyInfo;
+export default connect(null, { addBuddy })(BuddyInfo);

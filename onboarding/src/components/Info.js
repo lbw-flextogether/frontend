@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addInfo } from '../actions';
 
 class Info extends React.Component {
     state = {
@@ -7,7 +9,7 @@ class Info extends React.Component {
             email: '',
             phone: '',
             notification: '',
-            mobility: '',
+            mobility: null,
         }
     }
 
@@ -32,6 +34,7 @@ class Info extends React.Component {
 
     handleNext = e => {
         e.preventDefault();
+        this.props.addInfo(this.state.user);
         this.props.history.push('/time')
     }
 
@@ -72,14 +75,18 @@ class Info extends React.Component {
                     <option value="Text">Text Message Only</option>
                 </select>
                 <p>Mobility Level (choose one)</p>
-                <button value="low" onClick={this.handleMobility}>Low</button>
-                <button value="medium" onClick={this.handleMobility}>Medium</button>
-                <button value="high" onClick={this.handleMobility}>High</button>
-                <button onClick={this.handleNext}>Next</button>
+                <div>
+                    <button value="low" onClick={this.handleMobility}>Low</button>
+                    <button value="medium" onClick={this.handleMobility}>Medium</button>
+                    <button value="high" onClick={this.handleMobility}>High</button>
+                </div>
+                { this.state.user.mobility ?
+                <button onClick={this.handleNext}>Next</button> :
+                null }
             </form>
             </>
         );
     }
 }
 
-export default Info;
+export default connect(null, { addInfo })(Info);
