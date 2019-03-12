@@ -3,6 +3,17 @@ import Slot from './Slot';
 import { generateTimeslots } from './generateTimeslots';
 
 class Day extends React.Component {
+    state = {
+        scroll: 0,
+    }
+
+    scrollDown = () => {
+        this.setState({ scroll: this.state.scroll + 250 }, () => this.refs.time.scrollTop = this.state.scroll)
+    }
+
+    scrollUp = () => {
+        this.setState({ scroll: this.state.scroll - 250 }, () => this.refs.time.scrollTop = this.state.scroll)
+    }
     
     render() {
         const timeSlots = generateTimeslots(30, '06:00', '23:00')
@@ -10,8 +21,17 @@ class Day extends React.Component {
             <div>
             <h3>{this.props.day}</h3>
             <div>
-                <div className='time-slots'>{timeSlots.map(slot => <Slot day={this.props.day} slot={slot} key={slot} selectTime={this.props.selectTime}/>)}</div>
-                <div>Later times &#8681;</div>
+                <div 
+                    className='time-slots'
+                    ref="time"
+                >
+                    {timeSlots.map(slot => <Slot day={this.props.day} slot={slot} key={slot} selectTime={this.props.selectTime}/>)}
+                </div>
+                {this.state.scroll === 0 ?
+                <div onClick={this.scrollDown}>Later times 	&#128899;</div> :
+                this.state.scroll >= 500 ?
+                <div onClick={this.scrollUp}>Earlier times &#128897;</div> :
+                <div><span onClick={this.scrollUp}>&#128897;</span><span onClick={this.scrollDown}>	&#128899;</span></div>}
             </div>
             </div>
         );

@@ -10,12 +10,22 @@ class Slot extends React.Component {
             clicked: !this.state.clicked
         },
         () => {this.props.selectTime(this.props.day, this.props.slot, this.state.clicked)})
-        
     }
 
     render() {
         return (
-            <div onClick={() => this.handleClick()} className={!this.state.clicked ? 'slot' : 'selected-slot'}>{this.props.slot}</div>
+            <div 
+                onMouseDown={() => this.handleClick()} 
+                onMouseOver={e => {
+                    if (e.buttons === 1) {
+                        this.handleClick()
+                    }
+                    
+                }}
+                className={!this.state.clicked ? 'slot' : 'selected-slot'}
+            >
+            {this.props.slot}
+            </div>
         );
     }
 }
