@@ -1,20 +1,19 @@
 import React from 'react';
 
-class Info extends React.Component {
+class BuddyInfo extends React.Component {
     state = {
-        user: {
+        buddy: {
             name: '',
             email: '',
             phone: '',
-            notification: '',
-            mobility: '',
+            mobility: undefined,
         }
     }
 
     handleChanges = e => {
         this.setState({
-            user: {
-                ...this.state.user,
+            buddy: {
+                ...this.state.buddy,
                 [e.target.name]: e.target.value,
             }
         })
@@ -23,8 +22,8 @@ class Info extends React.Component {
     handleMobility = e => {
         e.preventDefault();
         this.setState({
-            user: {
-                ...this.state.user,
+            buddy: {
+                ...this.state.buddy,
                 mobility: e.target.value,
             }
         })
@@ -32,38 +31,39 @@ class Info extends React.Component {
 
     handleNext = e => {
         e.preventDefault();
-        this.props.history.push('/time')
+        this.props.history.push('/complete')
     }
 
     render() {
-        return (
+        return(
             <>
-            <h2>Tell us a bit more...</h2>
+            <h2>Fitness is always more fun with friends!</h2>
+            <p>Invite a friend or loved on to complete the program with you. We'll show them your available times and find a time that works for both of you.</p>
             <form>
                 <input 
                     type="text" 
                     placeholder="Name"
                     name="name"
-                    value={this.state.user.name}
+                    value={this.state.buddy.name}
                     onChange={this.handleChanges} 
                 />
                 <input 
                     type="email" 
                     placeholder="Email" 
                     name="email"
-                    value={this.state.user.email}
+                    value={this.state.buddy.email}
                     onChange={this.handleChanges}
                 />
                 <input 
                     type="tel" 
                     placeholder="Telephone Number"
                     name="phone"
-                    value={this.state.user.phone}
+                    value={this.state.buddy.phone}
                     onChange={this.handleChanges} 
                 />
                 <label>I prefer to receive notifications by</label>
                 <select 
-                    value={this.state.user.notification} 
+                    value={this.state.buddy.notification} 
                     onChange={this.handleChanges} 
                     name="notification"
                 >
@@ -82,4 +82,4 @@ class Info extends React.Component {
     }
 }
 
-export default Info;
+export default BuddyInfo;

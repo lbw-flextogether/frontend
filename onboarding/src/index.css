@@ -29,6 +29,10 @@ code {
   background: transparent;
 }
 
+.slot, .selected-slot {
+  user-select: none;
+}
+
 .selected-slot {
   background: red;
 }

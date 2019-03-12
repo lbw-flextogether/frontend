@@ -1,13 +1,13 @@
 import React from 'react';
 
-class Info extends React.Component {
+class BuddyVerify extends React.Component {
     state = {
         user: {
-            name: '',
-            email: '',
-            phone: '',
-            notification: '',
-            mobility: '',
+            name: 'Name pulled from GET',
+            email: 'Email pulled from GET',
+            phone: 'Phone pulled from GET',
+            mobility: undefined,
+            timezone: 'Time zone pulled from GET'
         }
     }
 
@@ -32,13 +32,14 @@ class Info extends React.Component {
 
     handleNext = e => {
         e.preventDefault();
-        this.props.history.push('/time')
+        this.props.history.push('/confirm')
     }
 
     render() {
         return (
             <>
-            <h2>Tell us a bit more...</h2>
+            <h2>We're glad to see you're interested in working out with {'{User 1}'}!</h2>
+            <p>Please confirm your information below.</p>
             <form>
                 <input 
                     type="text" 
@@ -71,6 +72,10 @@ class Info extends React.Component {
                     <option value="Email">Email Only</option>
                     <option value="Text">Text Message Only</option>
                 </select>
+                <label>Please select your Time Zone:</label>
+                <select>
+                    <option>Time Zones</option>
+                </select>
                 <p>Mobility Level (choose one)</p>
                 <button value="low" onClick={this.handleMobility}>Low</button>
                 <button value="medium" onClick={this.handleMobility}>Medium</button>
@@ -82,4 +87,4 @@ class Info extends React.Component {
     }
 }
 
-export default Info;
+export default BuddyVerify;
