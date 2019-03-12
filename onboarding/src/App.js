@@ -10,13 +10,15 @@ import BuddyInfo from './components/Buddy/BuddyInfo';
 import Complete from './components/Complete';
 import BuddyVerify from './components/Buddy/BuddyVerify'
 import BuddyConfirm from './components/Buddy/BuddyConfirm'
+import BuddyComplete from './components/Buddy/BuddyComplete'
+import Manual from './components/Manual'
 
 class App extends React.Component {
   render() {
     return (
       <Router>
         <>
-        <Route path="/" component={Welcome} />
+        <Route exact path="/" component={Welcome} />
         <Route path="/start" component={Start} />
         <Route path="/info" component={Info} />
         <Route path="/time" component={Time} />
@@ -24,6 +26,8 @@ class App extends React.Component {
         <Route path="/complete" component={Complete} />
         <Route path="/verify" component={BuddyVerify} />
         <Route path="/confirm" component={BuddyConfirm} />
+        <Route path="/buddycomplete" component={BuddyComplete} />
+        <Route path="/manual" component={Manual} />
         </>
       </Router>
     );
