@@ -76,9 +76,9 @@ class Info extends React.Component {
                 </select>
                 <p>Mobility Level (choose one)</p>
                 <div>
-                    <button value="low" onClick={this.handleMobility}>Low</button>
-                    <button value="medium" onClick={this.handleMobility}>Medium</button>
-                    <button value="high" onClick={this.handleMobility}>High</button>
+                    <button value="Low" onClick={this.handleMobility}>Low</button>
+                    <button value="Medium" onClick={this.handleMobility}>Medium</button>
+                    <button value="High" onClick={this.handleMobility}>High</button>
                 </div>
                 { this.state.user.mobility ?
                 <button onClick={this.handleNext}>Next</button> :

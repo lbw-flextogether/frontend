@@ -18,7 +18,6 @@ class Complete extends React.Component {
             "recipient_mobility_level": this.props.recipient_mobility_level
         }
         this.props.postInfo(user)
-        console.log(user);
     }
     render() {
         return (

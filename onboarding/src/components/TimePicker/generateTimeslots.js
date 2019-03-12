@@ -49,7 +49,7 @@ export const generateTimeslots = (interval, start, end) => {
         slots.push(generate.add(interval))
     }
 
-    const corrected = slots.map(slot => moment(slot, 'HH:mm').format('hh:mm A'))
+    const corrected = slots.map(slot => moment(slot, 'HH:mm').format('h:mm a'))
 
     return corrected
 }

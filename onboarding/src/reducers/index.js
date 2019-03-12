@@ -19,7 +19,7 @@ const initialState = {
     recipient_name: '',
     recipient_email: '',
     recipient_phone_number: '',
-    receipient_mobility_level: '',
+    recipient_mobility_level: '',
     role: '',
     posting: false,
     error: '',
@@ -53,7 +53,7 @@ export const reducer = (state = initialState, action) => {
                recipient_name: action.payload.name,
                recipient_email: action.payload.email,
                recipient_phone_number: action.payload.phone,
-               receipient_mobility_level: action.payload.mobility,
+               recipient_mobility_level: action.payload.mobility,
            }
         case POST_START:
            return {
