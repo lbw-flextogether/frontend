@@ -90,12 +90,27 @@ export const CONFIRM_TIME_FAILURE = "CONFIRM_TIME_FAILURE";
 
 export const confirmTime = (time, token) => dispatch => {
     dispatch({ type: CONFIRM_TIME_START })
-    console.log(time);
     axios.post(`https://flextogether.herokuapp.com/api/invite/${token}/confirm`, time)
         .then(res => {
             dispatch({ type: CONFIRM_TIME_SUCCESS, payload: res.data })
         })
         .catch(err => {
             dispatch({ type: CONFIRM_TIME_FAILURE, payload: err })
+        })
+}
+
+export const MANUAL_TIME_START = "MANUAL_TIME_START";
+export const MANUAL_TIME_SUCCESS = "MANUAL_TIME_SUCCESS";
+export const MANUAL_TIME_FAILURE = "MANUAL_TIME_FAILURE";
+
+export const manualTime = (time, token) => dispatch => {
+    console.log(time)
+    dispatch({ type: MANUAL_TIME_START })
+    axios.post(`https://flextogether.herokuapp.com/api/invite/${token}/manual_confirm`, time)
+        .then(res=>{
+            dispatch({ type: MANUAL_TIME_SUCCESS, payload: time })
+        })
+        .catch(err => {
+            dispatch({ type: MANUAL_TIME_FAILURE, payload: err })
         })
 }

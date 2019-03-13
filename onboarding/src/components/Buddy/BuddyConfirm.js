@@ -72,7 +72,12 @@ class BuddyConfirm extends React.Component {
    e.preventDefault();
    this.props.confirmTime({"timezone": this.state.timezone,"availability": this.state.confirmedAvailability}, this.props.match.params.id)
    this.props.history.push(`/invite/${this.props.match.params.id}/buddycomplete`)
- } 
+ }
+
+ handleManual = e => {
+   e.preventDefault();
+   this.props.history.push(`/invite/${this.props.match.params.id}/manual`)
+ }
 
   render() {
       return (
@@ -93,7 +98,7 @@ class BuddyConfirm extends React.Component {
               </div>
           ))}
           <button onClick={this.handleNext}>Next</button>
-          <p>None of these times work for me.</p>
+          <p onClick={this.handleManual}>None of these times work for me.</p>
           </>
       );
           }

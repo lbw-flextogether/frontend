@@ -28,7 +28,7 @@ class App extends React.Component {
         <Route exact path='/invite/:id' component={BuddyVerify} />
         <Route path="/invite/:id/confirm" component={BuddyConfirm} />
         <Route path="/invite/:id/buddycomplete" component={BuddyComplete} />
-        <Route path="/manual" component={Manual} />
+        <Route path="/invite/:id/manual" component={Manual} />
         <Route path='/verify/:id' component={EmailConfirm} />
         </>
       </Router>

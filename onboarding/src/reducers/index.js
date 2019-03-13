@@ -12,6 +12,9 @@ import {
     GET_BUDDY_START,
     GET_BUDDY_SUCCESS,
     GET_BUDDY_FAILURE,
+    MANUAL_TIME_START,
+    MANUAL_TIME_SUCCESS,
+    MANUAL_TIME_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -26,10 +29,13 @@ const initialState = {
     recipient_email: '',
     recipient_phone_number: '',
     recipient_mobility_level: '',
+    meetup_day: '',
+    meetup_time: '',
     is_companion: false,
     posting: false,
     confirmingEmail: false,
     gettingBuddy: false,
+    manualEntering: false,
     error: '',
 }
 
@@ -111,6 +117,24 @@ export const reducer = (state = initialState, action) => {
            return {
                ...state,
                gettingBuddy: false,
+               error: action.payload
+           }
+        case MANUAL_TIME_START:
+           return {
+               ...state,
+               manualEntering: true
+           }
+        case MANUAL_TIME_SUCCESS:
+           return {
+               ...state,
+               manualEntering: false,
+               meetup_day: action.payload.meetup_day,
+               meetup_time: action.payload.meetup_time,
+           }
+        case MANUAL_TIME_FAILURE:
+           return {
+               ...state,
+               manualEntering: false,
                error: action.payload
            }
         default:
