@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment-timezone';
+import { connect } from 'react-redux';
 
 class Slot extends React.Component {
     state = {
@@ -13,6 +15,7 @@ class Slot extends React.Component {
     }
 
     render() {
+        const time = moment.tz(this.props.slot, 'h:mm a', this.props.user1timezone).format('h:mm a');
         return (
             <div 
                 onMouseDown={() => this.handleClick()} 
@@ -24,10 +27,14 @@ class Slot extends React.Component {
                 }}
                 className={!this.state.clicked ? 'slot' : 'selected-slot'}
             >
-            {this.props.slot}
+            {moment(time,'h:mm a').tz(this.props.timezone).format('h:mm a')}
             </div>
         );
     }
 }
 
-export default Slot;
+const mapStateToProps = state => ({
+    user1timezone: state.timezone,
+})
+
+export default connect(mapStateToProps, {})(Slot);

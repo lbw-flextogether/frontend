@@ -46,7 +46,7 @@ class Time extends React.Component {
         e.preventDefault();
         const time = Object.keys(this.state.selectedTimes).filter(day => this.state.selectedTimes[day].length > 0).map(day => ({
             day: day,
-            time_slots: this.state.selectedTimes[day]
+            timeslots: this.state.selectedTimes[day]
         }))
         this.props.addTimes(time, this.state.timezone)
         this.props.history.push('/buddyinfo')
