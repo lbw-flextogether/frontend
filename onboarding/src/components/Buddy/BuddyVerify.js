@@ -1,14 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getBuddy } from '../../actions';
 
 class BuddyVerify extends React.Component {
     state = {
         user: {
-            name: 'Name pulled from GET',
-            email: 'Email pulled from GET',
-            phone: 'Phone pulled from GET',
-            mobility: undefined,
+            name: '',
+            email: '',
+            phone: '',
+            mobility: '',
             timezone: 'Time zone pulled from GET'
         }
+    }
+
+    componentDidMount() {
+        this.props.getBuddy(this.props.match.params.id)
+            .then(() => this.setState({
+                user: {
+                    name: this.props.name,
+                    email: this.props.email,
+                    phone: this.props.phone,
+                    mobility: this.props.mobility
+                }
+            }))
     }
 
     handleChanges = e => {
@@ -87,4 +101,11 @@ class BuddyVerify extends React.Component {
     }
 }
 
-export default BuddyVerify;
+const mapStateToProps = state => ({
+    name: state.recipient_name,
+    email: state.recipient_email,
+    phone: state.recipient_phone_number,
+    mobility: state.recipient_mobility_level
+})
+
+export default connect(mapStateToProps, { getBuddy })(BuddyVerify);

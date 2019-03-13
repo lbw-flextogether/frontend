@@ -68,3 +68,18 @@ export const confirmEmail = token => dispatch => {
             dispatch({ type: CONFIRM_EMAIL_FAILURE, payload: err })
         })
 }
+
+export const GET_BUDDY_START = "GET_BUDDY_START";
+export const GET_BUDDY_SUCCESS = "GET_BUDDY_SUCCESS";
+export const GET_BUDDY_FAILURE = "GET_BUDDY_FAILURE";
+
+export const getBuddy = token => dispatch => {
+    dispatch({ type: GET_BUDDY_START })
+    return axios.get(`https://flextogether.herokuapp.com/api/invite/${token}`)
+        .then(res => {
+            dispatch({ type: GET_BUDDY_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            dispatch({ type: GET_BUDDY_FAILURE, payload: err})
+        })
+}

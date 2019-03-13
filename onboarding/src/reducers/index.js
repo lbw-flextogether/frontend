@@ -9,6 +9,9 @@ import {
     CONFIRM_EMAIL_START,
     CONFIRM_EMAIL_SUCCESS,
     CONFIRM_EMAIL_FAILURE,
+    GET_BUDDY_START,
+    GET_BUDDY_SUCCESS,
+    GET_BUDDY_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -17,7 +20,7 @@ const initialState = {
     phone_number: '',
     notification_preference: '',
     mobility_level: '',
-    time_zone: '',
+    timezone: '',
     availability: [],
     recipient_name: '',
     recipient_email: '',
@@ -26,6 +29,7 @@ const initialState = {
     is_companion: false,
     posting: false,
     confirmingEmail: false,
+    gettingBuddy: false,
     error: '',
 }
 
@@ -90,6 +94,23 @@ export const reducer = (state = initialState, action) => {
            return {
                ...state,
                confirmingEmail: false,
+               error: action.payload
+           }
+        case GET_BUDDY_START:
+           return {
+               ...state,
+               gettingBuddy: true,
+           }
+        case GET_BUDDY_SUCCESS:
+           return {
+               ...state,
+               gettingBuddy: false,
+               ...action.payload
+           }
+        case GET_BUDDY_FAILURE:
+           return {
+               ...state,
+               gettingBuddy: false,
                error: action.payload
            }
         default:
