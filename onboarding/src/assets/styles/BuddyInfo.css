@@ -1,0 +1,12 @@
+.buddyForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.buddyForm input {
+    margin-bottom: 1em;
+}
+
+.buddyForm button {
+    margin-top: 2em;
+}

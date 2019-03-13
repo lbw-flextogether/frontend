@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addBuddy } from '../../actions';
 
+import '../../assets/styles/BuddyInfo.css';
+
 class BuddyInfo extends React.Component {
     state = {
         buddy: {
@@ -42,7 +44,7 @@ class BuddyInfo extends React.Component {
             <>
             <h2>Fitness is always more fun with friends!</h2>
             <p>Invite a friend or loved on to complete the program with you. We'll show them your available times and find a time that works for both of you.</p>
-            <form>
+            <form className="buddyForm">
                 <input 
                     type="text" 
                     placeholder="Name"
@@ -75,7 +77,7 @@ class BuddyInfo extends React.Component {
                     <option value="Text">Text Message Only</option>
                 </select> */}
                 <p>Mobility Level (choose one)</p>
-                <div>
+                <div className="buttonContainer">
                     <button value="Low" onClick={this.handleMobility}>Low</button>
                     <button value="Medium" onClick={this.handleMobility}>Medium</button>
                     <button value="High" onClick={this.handleMobility}>High</button>

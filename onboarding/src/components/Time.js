@@ -4,6 +4,8 @@ import moment from 'moment-timezone';
 import { connect } from 'react-redux';
 import { addTimes } from '../actions';
 
+import '../assets/styles/Time.css';
+
 class Time extends React.Component {
     state = {
         timezone: 'America/Los_Angeles',

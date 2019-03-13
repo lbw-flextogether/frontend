@@ -2,6 +2,8 @@ import React from 'react';
 import Slot from './Slot';
 import { generateTimeslots } from './generateTimeslots';
 
+import '../../assets/styles/Day.css';
+
 class Day extends React.Component {
     state = {
         scroll: 0,
@@ -20,7 +22,7 @@ class Day extends React.Component {
         return(
             <div>
             <h3>{this.props.day}</h3>
-            <div>
+            <div className="dayContainer">
                 <div 
                     className='time-slots'
                     ref="time"
@@ -28,10 +30,10 @@ class Day extends React.Component {
                     {timeSlots.map(slot => <Slot day={this.props.day} slot={slot} key={slot} selectTime={this.props.selectTime}/>)}
                 </div>
                 {this.state.scroll === 0 ?
-                <div onClick={this.scrollDown}>Later times 	&#128899;</div> :
+                <div onClick={this.scrollDown} className="moreTime">Later times 	&#128899;</div> :
                 this.state.scroll >= 500 ?
-                <div onClick={this.scrollUp}>Earlier times &#128897;</div> :
-                <div><span onClick={this.scrollUp}>&#128897;</span><span onClick={this.scrollDown}>	&#128899;</span></div>}
+                <div onClick={this.scrollUp} className="moreTime">Earlier times &#128897;</div> :
+                <div className="moreTime"><span onClick={this.scrollUp}>&#128897;</span><span onClick={this.scrollDown}>	&#128899;</span></div>}
             </div>
             </div>
         );
