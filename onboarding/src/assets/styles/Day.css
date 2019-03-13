@@ -1,0 +1,10 @@
+.dayContainer {
+    border: 1px solid;
+    text-align: center;
+}
+
+.moreTime {
+    margin-top: 0.3em;
+    text-align: center;
+    background-color: lightgray;
+}

@@ -1,0 +1,21 @@
+.infoForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoForm input {
+    margin-bottom: 1em;
+}
+
+.infoForm select {
+    margin-top: 1em;
+}
+
+.infoForm button {
+    margin-top: 2em;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}

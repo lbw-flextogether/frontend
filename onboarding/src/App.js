@@ -9,11 +9,12 @@ import Info from './components/Info';
 import Time from './components/Time';
 import BuddyInfo from './components/Buddy/BuddyInfo';
 import Complete from './components/Complete';
-import BuddyVerify from './components/Buddy/BuddyVerify'
-import BuddyConfirm from './components/Buddy/BuddyConfirm'
-import BuddyComplete from './components/Buddy/BuddyComplete'
-import Manual from './components/Manual'
+import BuddyVerify from './components/Buddy/BuddyVerify';
+import BuddyConfirm from './components/Buddy/BuddyConfirm';
+import BuddyComplete from './components/Buddy/BuddyComplete';
+import Manual from './components/Manual';
 import EmailConfirm from './components/EmailConfirm'
+import './assets/styles/App.css'
 
 class App extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class App extends React.Component {
         <>
         <Header />
         <main>
+        <div className="appContainer">
         <Route exact path="/" component={Welcome} />
         <Route path="/start" component={Start} />
         <Route path="/info" component={Info} />
@@ -33,6 +35,7 @@ class App extends React.Component {
         <Route path="/invite/:id/buddycomplete" component={BuddyComplete} />
         <Route path="/invite/:id/manual" component={Manual} />
         <Route path='/verify/:id' component={EmailConfirm} />
+        </div>
         </main>
         </>
       </Router>
