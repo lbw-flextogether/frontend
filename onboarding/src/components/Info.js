@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addInfo } from '../actions';
 
+import '../assets/styles/Info.css';
+
 class Info extends React.Component {
     state = {
         user: {
@@ -42,7 +44,7 @@ class Info extends React.Component {
         return (
             <>
             <h2>Tell us a bit more...</h2>
-            <form>
+            <form className="infoForm">
                 <input 
                     type="text" 
                     placeholder="Name"
@@ -75,7 +77,7 @@ class Info extends React.Component {
                     <option value="Text">Text Message Only</option>
                 </select>
                 <p>Mobility Level (choose one)</p>
-                <div>
+                <div className="buttonContainer">
                     <button value="Low" onClick={this.handleMobility}>Low</button>
                     <button value="Medium" onClick={this.handleMobility}>Medium</button>
                     <button value="High" onClick={this.handleMobility}>High</button>
