@@ -12,6 +12,7 @@ import BuddyVerify from './components/Buddy/BuddyVerify';
 import BuddyConfirm from './components/Buddy/BuddyConfirm';
 import BuddyComplete from './components/Buddy/BuddyComplete';
 import Manual from './components/Manual';
+import EmailConfirm from './components/EmailConfirm'
 import './assets/styles/App.css'
 
 class App extends React.Component {
@@ -25,10 +26,11 @@ class App extends React.Component {
         <Route path="/time" component={Time} />
         <Route path="/buddyinfo" component={BuddyInfo} />
         <Route path="/complete" component={Complete} />
-        <Route path="/verify" component={BuddyVerify} />
-        <Route path="/confirm" component={BuddyConfirm} />
-        <Route path="/buddycomplete" component={BuddyComplete} />
-        <Route path="/manual" component={Manual} />
+        <Route exact path='/invite/:id' component={BuddyVerify} />
+        <Route path="/invite/:id/confirm" component={BuddyConfirm} />
+        <Route path="/invite/:id/buddycomplete" component={BuddyComplete} />
+        <Route path="/invite/:id/manual" component={Manual} />
+        <Route path='/verify/:id' component={EmailConfirm} />
         </div>
       </Router>
     );

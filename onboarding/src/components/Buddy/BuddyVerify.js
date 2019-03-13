@@ -1,14 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getBuddy } from '../../actions';
 
 class BuddyVerify extends React.Component {
     state = {
+        user1: null,
         user: {
-            name: 'Name pulled from GET',
-            email: 'Email pulled from GET',
-            phone: 'Phone pulled from GET',
-            mobility: undefined,
-            timezone: 'Time zone pulled from GET'
+            name: '',
+            email: '',
+            phone: '',
+            mobility: '',
         }
+    }
+
+    componentDidMount() {
+        this.props.getBuddy(this.props.match.params.id)
+            .then(() => this.setState({
+                user1: this.props.user1,
+                user: {
+                    name: this.props.name,
+                    email: this.props.email,
+                    phone: this.props.phone,
+                    mobility: this.props.mobility
+                }
+            }))
     }
 
     handleChanges = e => {
@@ -32,13 +47,13 @@ class BuddyVerify extends React.Component {
 
     handleNext = e => {
         e.preventDefault();
-        this.props.history.push('/confirm')
+        this.props.history.push(`/invite/${this.props.match.params.id}/confirm`)
     }
 
     render() {
         return (
             <>
-            <h2>We're glad to see you're interested in working out with {'{User 1}'}!</h2>
+            <h2>We're glad to see you're interested in working out with {this.props.user1}!</h2>
             <p>Please confirm your information below.</p>
             <form>
                 <input 
@@ -72,14 +87,10 @@ class BuddyVerify extends React.Component {
                     <option value="Email">Email Only</option>
                     <option value="Text">Text Message Only</option>
                 </select>
-                <label>Please select your Time Zone:</label>
-                <select>
-                    <option>Time Zones</option>
-                </select>
                 <p>Mobility Level (choose one)</p>
-                <button value="low" onClick={this.handleMobility}>Low</button>
-                <button value="medium" onClick={this.handleMobility}>Medium</button>
-                <button value="high" onClick={this.handleMobility}>High</button>
+                <button value="Low" onClick={this.handleMobility}>Low</button>
+                <button value="Medium" onClick={this.handleMobility}>Medium</button>
+                <button value="High" onClick={this.handleMobility}>High</button>
                 <button onClick={this.handleNext}>Next</button>
             </form>
             </>
@@ -87,4 +98,12 @@ class BuddyVerify extends React.Component {
     }
 }
 
-export default BuddyVerify;
+const mapStateToProps = state => ({
+    user1: state.name,
+    name: state.recipient_name,
+    email: state.recipient_email,
+    phone: state.recipient_phone_number,
+    mobility: state.recipient_mobility_level
+})
+
+export default connect(mapStateToProps, { getBuddy })(BuddyVerify);
