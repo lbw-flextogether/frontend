@@ -25,9 +25,9 @@ class App extends React.Component {
         <Route path="/time" component={Time} />
         <Route path="/buddyinfo" component={BuddyInfo} />
         <Route path="/complete" component={Complete} />
-        <Route path='/invite/:id' component={BuddyVerify} />
-        <Route path="/confirm" component={BuddyConfirm} />
-        <Route path="/buddycomplete" component={BuddyComplete} />
+        <Route exact path='/invite/:id' component={BuddyVerify} />
+        <Route path="/invite/:id/confirm" component={BuddyConfirm} />
+        <Route path="/invite/:id/buddycomplete" component={BuddyComplete} />
         <Route path="/manual" component={Manual} />
         <Route path='/verify/:id' component={EmailConfirm} />
         </>

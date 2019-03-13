@@ -1,30 +1,34 @@
 import React from 'react';
 import Slot from './Slot';
+import { connect } from 'react-redux';
+import { confirmTime } from '../../actions';
+import moment from 'moment-timezone';
 
 class BuddyConfirm extends React.Component {
   state = {
-    "availability": [
-        {
-          "day": "Monday",
-          "time_slots": ["6:00 am", "6:30 am"]
-        },
-        {
-          "day": "Friday",
-          "time_slots": ["7:00 am", "7:30 am", "8:00 am"]
-        },
-        {
-          "day": "Saturday",
-          "time_slots": ["6:00 am", "8:00 am"]
-        }
-    ],
+    "timezone": '',
+    "availability": [],
     "confirmedAvailability": [],
 
+  }
+
+  componentDidMount() {
+    this.setState({
+      "timezone": this.props.timezone,
+      "availability": this.props.availability
+    })
+  }
+
+  handleTimeZone = e => {
+    this.setState({
+        timezone: e.target.value
+    })
   }
 
   selectTime = (day, time, clicked) => {
     const newTime = {
       "day": day,
-      "time_slots": [time],
+      "timeslots": [time],
     }
     if (!clicked) {
       if (this.state.confirmedAvailability.find(day => day.day === newTime.day) !== undefined) {
@@ -33,12 +37,12 @@ class BuddyConfirm extends React.Component {
             if (day.day === newTime.day) {
               day = {
                 ...day,
-                "time_slots": day.time_slots.filter(slot => slot !== newTime.time_slots[0])
+                "timeslots": day.timeslots.filter(slot => slot !== newTime.timeslots[0])
               }
             }
             return day
           })
-          }, () => console.log(this.state.confirmedAvailability))
+          })
       }
     } else {
     if (this.state.confirmedAvailability.find(day => day.day === newTime.day) === undefined) {
@@ -47,38 +51,44 @@ class BuddyConfirm extends React.Component {
             ...this.state.confirmedAvailability,
             newTime
           ]
-          }, () => console.log(this.state.confirmedAvailability))
+          })
     } else if (this.state.confirmedAvailability.find(day => day.day === newTime.day) !== undefined) {
       this.setState({
         "confirmedAvailability": this.state.confirmedAvailability.map(day => {
           if (day.day === newTime.day) {
             day = {
               ...day,
-              "time_slots": [...day.time_slots, newTime.time_slots.toString()]
+              "timeslots": [...day.timeslots, newTime.timeslots.toString()]
             }
           }
           return day
         })
-        }, () => console.log(this.state.confirmedAvailability))
+        })
     }
   }
 }
     
  handleNext = e => {
    e.preventDefault();
-   this.props.history.push('/confirmed')
+   this.props.confirmTime({"timezone": this.state.timezone,"availability": this.state.confirmedAvailability}, this.props.match.params.id)
+   this.props.history.push(`/invite/${this.props.match.params.id}/buddycomplete`)
  } 
 
   render() {
       return (
           <>
-          <h2>Here are some good times for [User 1], do any of these work for you?</h2>
+          <h2>Here are some good times for {this.props.user1}, do any of these work for you?</h2>
           <p>To complete the beta we are asking that people commit to one 30 minute time block once a wekk. Please choose what times work well for you.</p>
+          <label htmlFor="timezone">Select your timezone:</label>
+          <select value={this.state.timezone} onChange={this.handleTimeZone} id="timezone">
+                <option></option>
+                {moment.tz.names().map(name => <option key={name}>{name}</option>)}
+          </select>
           {this.state.availability.map(day => (
               <div key={day.day}>
                 <h2>{day.day}</h2>
                 <div>
-                    {day.time_slots.map(slot => <Slot key={slot} day={day.day} slot={slot} selectTime={this.selectTime} />)}
+                    {day.timeslots.map(slot => <Slot key={slot} day={day.day} slot={slot} selectTime={this.selectTime} timezone={this.state.timezone} />)}
                 </div>
               </div>
           ))}
@@ -89,4 +99,10 @@ class BuddyConfirm extends React.Component {
           }
 }
 
-export default BuddyConfirm;
+const mapStateToProps = state => ({
+  user1: state.name,
+  timezone: state.timezone,
+  availability: state.availability,
+})
+
+export default connect(mapStateToProps,{ confirmTime })(BuddyConfirm);
