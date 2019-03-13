@@ -53,3 +53,18 @@ export const postInfo = user => dispatch => {
             dispatch({ type: POST_FAILURE, payload: err })
         })
 }
+
+export const CONFIRM_EMAIL_START = "CONFIRM_EMAIL_START";
+export const CONFIRM_EMAIL_SUCCESS = "CONFIRM_EMAIL_SUCCESS";
+export const CONFIRM_EMAIL_FAILURE = "CONFIRM_EMAIL_FAILURE";
+
+export const confirmEmail = token => dispatch => {
+    dispatch({ type: CONFIRM_EMAIL_START})
+    axios.post(`https://flextogether.herokuapp.com/api/invite/${token}/verify`)
+        .then(res => {
+            dispatch({ type: CONFIRM_EMAIL_SUCCESS, payload: res.data })
+        })
+        .catch(err => {
+            dispatch({ type: CONFIRM_EMAIL_FAILURE, payload: err })
+        })
+}

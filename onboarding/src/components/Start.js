@@ -9,8 +9,9 @@ class Start extends React.Component {
 
     handleRole = e => {
         e.preventDefault();
+        const bool = e.target.name === 'companion' ? true : false;
         this.setState({
-            role: e.target.name
+            role: bool
         }, ()=>this.props.addRole(this.state.role))
     }
 

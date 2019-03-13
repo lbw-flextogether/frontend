@@ -6,6 +6,9 @@ import {
     POST_START,
     POST_SUCCESS,
     POST_FAILURE,
+    CONFIRM_EMAIL_START,
+    CONFIRM_EMAIL_SUCCESS,
+    CONFIRM_EMAIL_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -20,8 +23,9 @@ const initialState = {
     recipient_email: '',
     recipient_phone_number: '',
     recipient_mobility_level: '',
-    role: '',
+    is_companion: false,
     posting: false,
+    confirmingEmail: false,
     error: '',
 }
 
@@ -30,7 +34,7 @@ export const reducer = (state = initialState, action) => {
         case ADD_ROLE:
            return {
                ...state,
-               role: action.payload
+               is_companion: action.payload
            }
         case ADD_INFO:
            return {
@@ -71,6 +75,22 @@ export const reducer = (state = initialState, action) => {
                ...state,
                posting: false,
                error: action.payload,
+           }
+        case CONFIRM_EMAIL_START:
+           return {
+               ...state,
+               confirmingEmail: true,
+           }
+        case CONFIRM_EMAIL_SUCCESS:
+           return {
+               ...state,
+               confirmingEmail: false,
+           }
+        case CONFIRM_EMAIL_FAILURE:
+           return {
+               ...state,
+               confirmingEmail: false,
+               error: action.payload
            }
         default:
             return state
