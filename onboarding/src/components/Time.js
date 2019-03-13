@@ -1,10 +1,12 @@
 import React from 'react';
 import Day from './TimePicker/Day';
-import moment from 'moment-timezone'
+import moment from 'moment-timezone';
+import { connect } from 'react-redux';
+import { addTimes } from '../actions';
 
 class Time extends React.Component {
     state = {
-        timezone: '',
+        timezone: 'America/Los_Angeles',
         selectedTimes: {
             Sunday: [],
             Monday: [],
@@ -34,8 +36,19 @@ class Time extends React.Component {
         }
     }
 
+    handleTimeZone = e => {
+        this.setState({
+            timezone: e.target.value
+        })
+    }
+
     handleNext = e => {
         e.preventDefault();
+        const time = Object.keys(this.state.selectedTimes).filter(day => this.state.selectedTimes[day].length > 0).map(day => ({
+            day: day,
+            time_slots: this.state.selectedTimes[day]
+        }))
+        this.props.addTimes(time, this.state.timezone)
         this.props.history.push('/buddyinfo')
     }
 
@@ -45,7 +58,7 @@ class Time extends React.Component {
             <h2>What's a good time to complete the program?</h2>
             <p>To complete the beta, we are asking that people commit to one 30 minute time block once a week. Please choose what times work well for you.</p>
             <label>Select Your Time Zone:</label>
-            <select>
+            <select value={this.state.timezone} onChange={this.handleTimeZone}>
                 <option></option>
                 {moment.tz.names().map(name => <option key={name}>{name}</option>)}
             </select>
@@ -58,4 +71,4 @@ class Time extends React.Component {
     }
 }
 
-export default Time;
+export default connect(null, { addTimes })(Time);
