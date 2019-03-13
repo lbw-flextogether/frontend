@@ -2,6 +2,7 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import Header from './components/Header';
 import Welcome from './components/Welcome';
 import Start from './components/Start';
 import Info from './components/Info';
@@ -19,6 +20,8 @@ class App extends React.Component {
     return (
       <Router>
         <>
+        <Header />
+        <main>
         <Route exact path="/" component={Welcome} />
         <Route path="/start" component={Start} />
         <Route path="/info" component={Info} />
@@ -30,6 +33,7 @@ class App extends React.Component {
         <Route path="/invite/:id/buddycomplete" component={BuddyComplete} />
         <Route path="/invite/:id/manual" component={Manual} />
         <Route path='/verify/:id' component={EmailConfirm} />
+        </main>
         </>
       </Router>
     );

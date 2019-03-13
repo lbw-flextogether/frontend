@@ -1,16 +1,156 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family:'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+header {
+  background: #002047;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+}
+
+.header-container {
+  width: 100%;
+  max-width: 940px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  color: white;
+  font-size: 2rem;
+}
+
+header p {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 940px;
+}
+
+.welcome {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome h2 {
+  font-size: 3.5rem;
+}
+
+.welcome button {
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  color: #279CCF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 9px 50px;
+  border: 4px solid #279CCF;
+  border-radius: 10px;
+  background-color: transparent;
+  transition: background-color 300ms ease;
+}
+
+.welcome button:hover {
+  color: white;
+  background-color: #279CCF;
+}
+
+.start {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start h2 {
+  font-size: 3.5rem;
+}
+
+.start p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.start div {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.start div button {
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  transition: background-color 300ms ease;
+  border: 4px solid gray;
+  border-radius: 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: gray;
+}
+
+.start div button:hover {
+  color: white;
+  background: gray;
+}
+
+.start div button:focus {
+  outline: 0;
+}
+
+.start .active {
+  border-color: #279CCF;
+  color: #279CCF;
+}
+
+.start .active:hover {
+  background: #279CCF;
+  color: white;
+}
+
+.next-btn {
+  margin: 30px 0;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  color: #279CCF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 9px 50px;
+  border: 4px solid #279CCF;
+  border-radius: 10px;
+  background-color: transparent;
+  transition: background-color 300ms ease;
+}
+
+.next-btn:hover {
+  color: white;
+  background-color: #279CCF;
 }
 
 .days {
