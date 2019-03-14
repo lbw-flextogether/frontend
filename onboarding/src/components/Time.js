@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { addTimes } from '../actions';
 import Slider from "react-slick";
 
+
 class Time extends React.Component {
     state = {
         timezone: 'America/Los_Angeles',
@@ -82,7 +83,6 @@ class Time extends React.Component {
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
-            initialSlide: 1
           };
         return (
             <section className="time">

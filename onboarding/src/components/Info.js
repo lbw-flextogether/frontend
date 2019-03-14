@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addInfo } from '../actions';
 
+import '../assets/styles/Info.css';
+
 class Info extends React.Component {
     state = {
         user: {

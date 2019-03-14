@@ -2,6 +2,8 @@ import React from 'react';
 import Slot from './Slot';
 import { generateTimeslots } from './generateTimeslots';
 
+import '../../assets/styles/Day.css';
+
 class Day extends React.Component {
     state = {
         scroll: 0,
