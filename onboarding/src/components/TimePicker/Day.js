@@ -8,11 +8,11 @@ class Day extends React.Component {
     }
 
     scrollDown = () => {
-        this.setState({ scroll: this.state.scroll + 250 }, () => this.refs.time.scrollTop = this.state.scroll)
+        this.setState({ scroll: this.state.scroll + 275 }, () => this.refs.time.scrollTop = this.state.scroll)
     }
 
     scrollUp = () => {
-        this.setState({ scroll: this.state.scroll - 250 }, () => this.refs.time.scrollTop = this.state.scroll)
+        this.setState({ scroll: this.state.scroll - 275 }, () => this.refs.time.scrollTop = this.state.scroll)
     }
     
     render() {
@@ -20,7 +20,7 @@ class Day extends React.Component {
         return(
             <div>
             <h3>{this.props.day}</h3>
-            <div>
+            <div className='time-slots-container'>
                 <div 
                     className='time-slots'
                     ref="time"
@@ -28,10 +28,10 @@ class Day extends React.Component {
                     {timeSlots.map(slot => <Slot day={this.props.day} slot={slot} key={slot} selectTime={this.props.selectTime}/>)}
                 </div>
                 {this.state.scroll === 0 ?
-                <div onClick={this.scrollDown}>Later times 	&#128899;</div> :
+                <div onClick={this.scrollDown} className="scroll">Later times 	&#128899;</div> :
                 this.state.scroll >= 500 ?
-                <div onClick={this.scrollUp}>Earlier times &#128897;</div> :
-                <div><span onClick={this.scrollUp}>&#128897;</span><span onClick={this.scrollDown}>	&#128899;</span></div>}
+                <div onClick={this.scrollUp} className="scroll">Earlier times &#128897;</div> :
+                <div className="scroll"><span onClick={this.scrollUp}>&#128897;</span><span onClick={this.scrollDown}>	&#128899;</span></div>}
             </div>
             </div>
         );
