@@ -6,10 +6,10 @@ const Welcome = props => {
         props.history.push('/start');
     }
     return (
-        <>
-        <h1>Welcome to FlexTogether</h1>
+        <section className="welcome">
+        <h2>Welcome to FlexTogether</h2>
         <button onClick={handleBtn}>Start</button>
-        </>
+        </section>
     );
 };
 

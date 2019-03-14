@@ -22,15 +22,29 @@ class Start extends React.Component {
 
     render() {
         return (
-            <>
+            <section className="start">
             <h2>Who are you?</h2>
             <p>Choose 1:</p>
-            <button name='senior' onClick={this.handleRole}>I am interested in low impact exercise</button>
-            <button name='companion' onClick={this.handleRole}>I want to be a companion to my loved one/friend who needs to do low impact exercise</button>
-            {this.state.role ?
-            <button onClick={this.handleNext}>Next</button> :
+            <div>
+                <button 
+                    name='senior' 
+                    onClick={this.handleRole}
+                    className={this.state.role === false ? 'active' : null}
+                >
+                I am interested in low impact exercise
+                </button>
+                <button 
+                    name='companion' 
+                    onClick={this.handleRole}
+                    className={this.state.role === true ? 'active' : null}
+                >
+                I want to be a companion to my loved one/friend who needs to do low impact exercise
+                </button>
+            </div>
+            {this.state.role !== null ?
+            <button onClick={this.handleNext} className="next-btn">Next</button> :
             null}
-            </>
+            </section>
         );
     }
 };
