@@ -23,11 +23,16 @@ header {
 }
 
 .header-container {
-  width: 100%;
+  width: 95%;
   max-width: 940px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+h2 {
+  font-size: 3.5rem;
+  text-align: center;
 }
 
 header h1 {
@@ -56,10 +61,6 @@ main {
   align-items: center;
 }
 
-.welcome h2 {
-  font-size: 3.5rem;
-}
-
 .welcome button {
   cursor: pointer;
   font-family: 'Open Sans', sans-serif;
@@ -78,16 +79,16 @@ main {
   background-color: #279CCF;
 }
 
+.welcome button:focus {
+  outline: 0;
+}
+
 .start {
-  height: 400px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.start h2 {
-  font-size: 3.5rem;
 }
 
 .start p {
@@ -99,6 +100,13 @@ main {
   width: 50%;
   display: flex;
   justify-content: space-around;
+}
+
+@media (max-width: 640px) {
+  .start div {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .start div button {
@@ -134,6 +142,12 @@ main {
   color: white;
 }
 
+@media (max-width: 640px) {
+  .start div button:first-of-type {
+    margin-bottom: 20px;
+  }
+}
+
 .next-btn {
   margin: 30px 0;
   cursor: pointer;
@@ -151,6 +165,160 @@ main {
 .next-btn:hover {
   color: white;
   background-color: #279CCF;
+}
+
+.next-btn:focus {
+  outline: 0;
+}
+
+.info form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info form label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.info form input {
+  width: 35%;
+  height: 35px;
+  padding: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  border: 3px solid gray;
+  border-radius: 10px;
+  transition: border-color 300ms ease;
+}
+
+@media (max-width: 640px) {
+  .info form input {
+    width: 75%;
+  }
+}
+
+.info form input:focus {
+  outline: 0;
+  border-color: #279CCF;
+}
+
+.info form input::placeholder {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.info form select {
+  width: 35%;
+  height: 35px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  padding: 0 5px;
+  border: 3px solid gray;
+  border-radius: 10px;
+  transition: border-color 300ms ease;
+}
+
+@media (max-width: 640px) {
+  .info form select {
+    width: 75%;
+  }
+}
+
+.info form select:focus {
+  outline: 0;
+  border-color: #279CCF;
+}
+
+.info form p {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.info .mobility-btns {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+}
+
+.info .mobility-btns button {
+  cursor: pointer;
+  background: transparent;
+  border: 3px solid gray;
+  border-left: 1.5px solid gray;
+  border-right: 1.5px solid gray;
+  height: 35px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  padding: 0 10.7%;
+  transition: border-color 300ms ease;
+  transition: background-color 300ms ease;
+}
+
+.info .mobility-btns button:focus {
+ outline: 0;
+}
+
+.info .mobility-btns button:hover {
+  background-color: lightgray;
+ }
+
+.info .mobility-btns button:first-child {
+  background: transparent;
+  border: 3px solid gray;
+  border-right: 1.5px solid gray;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.info .mobility-btns button:first-child:hover {
+  background-color: lightgray;
+ }
+
+.info .mobility-btns button:last-child {
+  background: transparent;
+  border: 3px solid gray;
+  border-left: 1.5px solid gray;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.info .mobility-btns button:last-child:hover {
+  background-color: lightgray;
+ }
+
+.info .mobility-btns .active {
+   border-color: #279CCF;
+   color: #279CCF;
+ }
+
+.info .mobility-btns .active:hover {
+  color: black;
+  background-color: #d7ebf3;
+}
+
+.info .mobility-btns .active:first-child {
+  border-color: #279CCF;
+}
+
+.info .mobility-btns .active:first-child:hover {
+  color: black;
+  background-color: #d7ebf3;
+}
+
+.info .mobility-btns .active:last-child {
+  border-color: #279CCF;
+}
+
+.info .mobility-btns .active:last-child:hover {
+  color: black;
+  background-color: #d7ebf3;
 }
 
 .days {
