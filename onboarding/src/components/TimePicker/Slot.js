@@ -20,9 +20,8 @@ class Slot extends React.Component {
                     if (e.buttons === 1) {
                         this.handleClick()
                     }
-                    
                 }}
-                className={!this.state.clicked ? 'slot' : 'selected-slot'}
+                className={!this.state.clicked ? 'slot' : 'slot selected-slot'}
             >
             {this.props.slot}
             </div>

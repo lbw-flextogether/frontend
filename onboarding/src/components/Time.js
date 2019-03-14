@@ -3,12 +3,12 @@ import Day from './TimePicker/Day';
 import moment from 'moment-timezone';
 import { connect } from 'react-redux';
 import { addTimes } from '../actions';
+import Slider from "react-slick";
 
-import '../assets/styles/Time.css';
 
 class Time extends React.Component {
     state = {
-        timezone: 'America/Los_Angeles',
+        timezone: 'America/Chicago',
         selectedTimes: {
             Sunday: [],
             Monday: [],
@@ -17,7 +17,7 @@ class Time extends React.Component {
             Thursday: [],
             Friday: [],
             Saturday: [],
-        }
+        },
     }
 
     selectTime = (day, time, clicked) => {
@@ -55,20 +55,61 @@ class Time extends React.Component {
     }
 
     render() {
+        const settings = {
+            infinite: true,
+            speed: 500,
+            slidesToShow: 7,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 7,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 890,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 590,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 430,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
+                },
+            ]
+          };
         return (
-            <>
+            <section className="time">
+            
             <h2>What's a good time to complete the program?</h2>
             <p>To complete the beta, we are asking that people commit to one 30 minute time block once a week. Please choose what times work well for you.</p>
-            <label>Select Your Time Zone:</label>
-            <select value={this.state.timezone} onChange={this.handleTimeZone}>
+            <label htmlFor="timezone">Select Your Time Zone:</label>
+            <select value={this.state.timezone} onChange={this.handleTimeZone} id="timezone">
                 <option></option>
                 {moment.tz.names().map(name => <option key={name}>{name}</option>)}
             </select>
-            <div className="days">
+            
+            <div className='days'>
+            <Slider {...settings}>
             {Object.keys(this.state.selectedTimes).map(day=><Day day={day} key={day} selectTime={this.selectTime} />)}
+            </Slider>
             </div>
-            <button onClick={this.handleNext}>Next</button>
-            </>
+            
+            <button onClick={this.handleNext} className="next-btn">Next</button>
+            </section>
         );
     }
 }

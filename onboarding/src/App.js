@@ -14,6 +14,7 @@ import BuddyConfirm from './components/Buddy/BuddyConfirm';
 import BuddyComplete from './components/Buddy/BuddyComplete';
 import Manual from './components/Manual';
 import EmailConfirm from './components/EmailConfirm'
+import SliderTest from './SliderTest';
 import './assets/styles/App.css'
 
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
         <Route path="/invite/:id/buddycomplete" component={BuddyComplete} />
         <Route path="/invite/:id/manual" component={Manual} />
         <Route path='/verify/:id' component={EmailConfirm} />
+        <Route path='/SliderTest' component={SliderTest} />
         </div>
         </main>
         </>

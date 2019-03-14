@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBuddy } from '../../actions';
+import Loader from 'react-loader-spinner';
 
 class BuddyVerify extends React.Component {
     state = {
@@ -51,8 +52,14 @@ class BuddyVerify extends React.Component {
     }
 
     render() {
+        if (!this.state.user1) {
         return (
-            <>
+            <div className="loader">
+                <Loader type="ThreeDots" color="#279CCF"/>
+            </div>
+        )} else {
+        return (
+            <section className="info">
             <h2>We're glad to see you're interested in working out with {this.props.user1}!</h2>
             <p>Please confirm your information below.</p>
             <form>
@@ -77,7 +84,7 @@ class BuddyVerify extends React.Component {
                     value={this.state.user.phone}
                     onChange={this.handleChanges} 
                 />
-                <label>I prefer to receive notifications by</label>
+                {/* <label>I prefer to receive notifications by</label>
                 <select 
                     value={this.state.user.notification} 
                     onChange={this.handleChanges} 
@@ -86,15 +93,35 @@ class BuddyVerify extends React.Component {
                     <option value="EmailAndText">Email & Text</option>
                     <option value="Email">Email Only</option>
                     <option value="Text">Text Message Only</option>
-                </select>
+                </select> */}
                 <p>Mobility Level (choose one)</p>
-                <button value="Low" onClick={this.handleMobility}>Low</button>
-                <button value="Medium" onClick={this.handleMobility}>Medium</button>
-                <button value="High" onClick={this.handleMobility}>High</button>
-                <button onClick={this.handleNext}>Next</button>
+                <div className="mobility-btns">
+                    <button 
+                        value="Low" 
+                        onClick={this.handleMobility}
+                        className={this.state.user.mobility === "Low" ? 'active' : null}
+                    >
+                    Low
+                    </button>
+                    <button 
+                        value="Medium" 
+                        onClick={this.handleMobility}
+                        className={this.state.user.mobility === "Medium" ? 'active' : null}
+                    >
+                    Medium
+                    </button>
+                    <button 
+                        value="High" 
+                        onClick={this.handleMobility}
+                        className={this.state.user.mobility === "High" ? 'active' : null}
+                    >
+                    High
+                    </button>
+                </div>
+                <button onClick={this.handleNext} className="next-btn">Next</button>
             </form>
-            </>
-        );
+            </section>
+        );}
     }
 }
 

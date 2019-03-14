@@ -10,6 +10,7 @@ class EmailConfirm extends React.Component {
         return (
             <>
             <h2>Thank you for confirming your email!</h2>
+            <p>An email has been sent to your companion for them to select a time based on your availability. Once they choose a time, you will be sent an email confirmation</p>
             </>
         );
     }

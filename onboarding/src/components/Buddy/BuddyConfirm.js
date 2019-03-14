@@ -81,25 +81,31 @@ class BuddyConfirm extends React.Component {
 
   render() {
       return (
-          <>
+          <section className="time">
           <h2>Here are some good times for {this.props.user1}, do any of these work for you?</h2>
-          <p>To complete the beta we are asking that people commit to one 30 minute time block once a wekk. Please choose what times work well for you.</p>
+          <p>To complete the beta we are asking that people commit to one 30 minute time block once a week. Please choose what times work well for you.</p>
           <label htmlFor="timezone">Select your timezone:</label>
           <select value={this.state.timezone} onChange={this.handleTimeZone} id="timezone">
                 <option></option>
                 {moment.tz.names().map(name => <option key={name}>{name}</option>)}
           </select>
-          {this.state.availability.map(day => (
-              <div key={day.day}>
-                <h2>{day.day}</h2>
-                <div>
+
+          <div className="days buddy-time">
+            {this.state.availability.map(day => (
+              <div className="buddy-time-day" key={day.day}>
+                <h3>{day.day}</h3>
+                <div className="time-slots-container" style={{padding: 0}}>
+                  <div className="time-slots" ref="time" style={{height: 'auto'}}>
                     {day.timeslots.map(slot => <Slot key={slot} day={day.day} slot={slot} selectTime={this.selectTime} timezone={this.state.timezone} />)}
+                  </div>
                 </div>
-              </div>
-          ))}
-          <button onClick={this.handleNext}>Next</button>
-          <p onClick={this.handleManual}>None of these times work for me.</p>
-          </>
+            </div>
+            ))}
+          </div>
+
+          <button onClick={this.handleNext} className="next-btn">Next</button>
+          <p onClick={this.handleManual} className="manual">None of these times work for me.</p>
+          </section>
       );
           }
 }
