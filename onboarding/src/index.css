@@ -384,10 +384,18 @@ main {
 }
 
 .days {
-  width: 100%;
+  position: relative;
+  left: 10px;
+  width: 95%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 1.6rem;
+}
+
+@media (max-width: 430px) {
+  .days {
+    width: 80%
+  }
 }
 
 .days h3 {
@@ -449,9 +457,14 @@ main {
   user-select: none;
 }
 
+@media (max-width: 430px) {
+  .scroll {
+    display: none;
+  }
+}
+
 .slick-list {
   width: 95%;
-  display: flex;
 }
 
 .slick-slider { 
@@ -476,6 +489,14 @@ main {
 
 .slick-slide:focus {
   outline: 0;
+}
+
+.slick-next {
+  right: -10px;
+}
+
+.slick-right {
+  left: -15px;
 }
 
 .loader {

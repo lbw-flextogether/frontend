@@ -69,7 +69,7 @@ class Time extends React.Component {
                     }
                 },
                 {
-                    breakpoint: 690,
+                    breakpoint: 890,
                     settings: {
                         slidesToShow: 5,
                         slidesToScroll: 1,
@@ -83,7 +83,7 @@ class Time extends React.Component {
                     }
                 },
                 {
-                    breakpoint: 375,
+                    breakpoint: 430,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
@@ -102,7 +102,7 @@ class Time extends React.Component {
                 {moment.tz.names().map(name => <option key={name}>{name}</option>)}
             </select>
             
-            <div className='days slick-slider'>
+            <div className='days'>
             <Slider {...settings}>
             {Object.keys(this.state.selectedTimes).map(day=><Day day={day} key={day} selectTime={this.selectTime} />)}
             </Slider>
