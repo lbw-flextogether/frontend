@@ -5,7 +5,7 @@ const BuddyComplete = props => {
     return (
         <>
         <h2>Thank you! For the next 4 weeks you and {props.user1} will be working out at</h2>
-        <h3>{props.day}s @ {props.time}</h3>
+        <h3 className="confirmed-time">{props.day}s @ {props.time}</h3>
         <p>Don't worry, we'll send you a reminder email and text.</p>
         </>
     );

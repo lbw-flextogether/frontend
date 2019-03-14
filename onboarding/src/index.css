@@ -390,11 +390,7 @@ main {
   font-size: 1.6rem;
 }
 
-.days > div {
-  width: 13%;
-}
-
-.time h3 {
+.days h3 {
   text-align: center;
   margin-bottom: 5px;
 }
@@ -404,6 +400,7 @@ main {
   border: 3px solid #279CCF;
   border-radius: 10px;
   padding-bottom: 5px;
+  width: 100%;
 }
 
 .time-slots {
@@ -419,6 +416,7 @@ main {
 }
 
 .slot {
+  cursor: pointer;
   user-select: none;
   text-align: center;
   font-weight: 600;
@@ -431,9 +429,14 @@ main {
 }
 
 .selected-slot {
+  cursor: pointer;
+  user-select: none;
   background: #279CCF;
   color: white;
+  border-bottom: 1px solid #279CCF;
+  text-align: center;
 }
+
 
 .scroll {
   display: flex;
@@ -446,15 +449,9 @@ main {
   user-select: none;
 }
 
-.whateverthefuck {
-  width: 50%;
-  margin: 0 auto;
-  background: red;
-  color: black;
-}
-
 .slick-list {
   width: 95%;
+  display: flex;
 }
 
 .slick-slider { 
@@ -475,4 +472,50 @@ main {
 }
 .slick-slide {
   width: 95%;
+}
+
+.slick-slide:focus {
+  outline: 0;
+}
+
+.loader {
+  width: 100%;
+  margin: 100px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.buddy-time {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buddy-time-day {
+  width: 13%;
+}
+
+@media (max-width: 590px) {
+  .buddy-time {
+    align-items: center;
+    flex-direction: column;
+  }
+  .buddy-time-day {
+    width: 80%;
+  }
+}
+
+.manual {
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 300ms ease;
+}
+
+.manual:hover {
+  color: red;
+}
+
+.confirmed-time {
+  text-align: center;
+  font-size: 3rem;
+  color: #279CCF;
 }

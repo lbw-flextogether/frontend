@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { manualTime } from '../actions';
 import moment from 'moment';
+import Loader from 'react-loader-spinner'
 
 class Manual extends React.Component {
     state = {
@@ -28,11 +29,17 @@ class Manual extends React.Component {
     }
 
     render() {
+        if (this.props.user === undefined) {
+            return (
+                <div className="loader">
+                    <Loader type="ThreeDots" color="#279CCF"/>
+                </div>
+        )} else {
         return (
-            <>
+            <section className="manual-entry">
             <h2>Looks like we're having a hard time finding a time that works for both of you. Let's try things the old fashioned way.</h2>
-            {/* <h3>Please call {this.state.props.user1} and figure out a time that works</h3> */}
-            <h2>What time works?</h2>
+            <h3>Please call {this.props.user} and figure out a time that works</h3>
+            <h3>What time works?</h3>
             <form>
                 <div>
                 <input type="time" value={this.state.meetup_time} name="meetup_time" onChange={this.handleChange} />
@@ -48,13 +55,14 @@ class Manual extends React.Component {
                         <option>Saturday</option>
                     </select>
                 </div>
-                <button onClick={this.handleSubmit}>Submit</button>
+                <button onClick={this.handleSubmit} className="next-btn">Next</button>
             </form>
-            </>
+            </section>
         );
+        }
     }
 }
 
-const mapStateToProps = state => ({ user1: state.name })
+const mapStateToProps = state => ({ user: state.name })
 
 export default connect(mapStateToProps, { manualTime })(Manual);

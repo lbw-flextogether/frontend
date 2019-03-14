@@ -15,6 +15,9 @@ import {
     MANUAL_TIME_START,
     MANUAL_TIME_SUCCESS,
     MANUAL_TIME_FAILURE,
+    CONFIRM_TIME_START,
+    CONFIRM_TIME_SUCCESS,
+    CONFIRM_TIME_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -36,6 +39,7 @@ const initialState = {
     confirmingEmail: false,
     gettingBuddy: false,
     manualEntering: false,
+    confirmingTime: false,
     error: '',
 }
 
@@ -135,6 +139,24 @@ export const reducer = (state = initialState, action) => {
            return {
                ...state,
                manualEntering: false,
+               error: action.payload
+           }
+        case CONFIRM_TIME_START:
+           return {
+               ...state,
+                confirmingTime: true
+           }
+        case CONFIRM_TIME_SUCCESS:
+           return {
+               ...state,
+               confirmingTime: false,
+               meetup_day: action.payload.meetup_day,
+               meetup_time: action.payload.meetup_time,
+           }
+        case CONFIRM_TIME_FAILURE:
+           return {
+               ...state,
+               confirmingTime: false,
                error: action.payload
            }
         default:
