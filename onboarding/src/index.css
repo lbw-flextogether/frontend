@@ -37,6 +37,11 @@ h2 {
   color: #002047
 }
 
+p {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
 header h1 {
   margin: 0;
   color: white;
@@ -171,6 +176,12 @@ main {
 
 .next-btn:focus {
   outline: 0;
+}
+
+.info > p {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .info form {
@@ -315,8 +326,8 @@ main {
 }
 
 .info .mobility-btns .active:first-child:hover {
-  color: white;
-  background-color: #279CCF;
+  color: #002047;
+  background-color: #d7ebf3;
 }
 
 .info .mobility-btns .active:last-child {
@@ -442,6 +453,26 @@ main {
   color: black;
 }
 
+.slick-list {
+  width: 95%;
+}
+
+.slick-slider { 
+  width: 95% !important;
+  display: flex;
+  justify-content: center;
+}
+
+.slick-track::before {
+  width: 95%;
+}
+
 .slick-arrow::before {
-  color: black;
+  color: #279CCF;
+}
+.slick-active, .slick-current {
+  margin: 0 auto;
+}
+.slick-slide {
+  width: 95%;
 }

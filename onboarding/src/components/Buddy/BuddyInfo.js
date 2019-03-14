@@ -41,7 +41,7 @@ class BuddyInfo extends React.Component {
 
     render() {
         return(
-            <>
+            <section className="info">
             <h2>Fitness is always more fun with friends!</h2>
             <p>Invite a friend or loved on to complete the program with you. We'll show them your available times and find a time that works for both of you.</p>
             <form className="buddyForm">
@@ -77,16 +77,34 @@ class BuddyInfo extends React.Component {
                     <option value="Text">Text Message Only</option>
                 </select> */}
                 <p>Mobility Level (choose one)</p>
-                <div className="buttonContainer">
-                    <button value="Low" onClick={this.handleMobility}>Low</button>
-                    <button value="Medium" onClick={this.handleMobility}>Medium</button>
-                    <button value="High" onClick={this.handleMobility}>High</button>
+                <div className="mobility-btns">
+                <button 
+                        value="Low" 
+                        onClick={this.handleMobility}
+                        className={this.state.buddy.mobility === "Low" ? 'active' : null}
+                    >
+                    Low
+                    </button>
+                    <button 
+                        value="Medium" 
+                        onClick={this.handleMobility}
+                        className={this.state.buddy.mobility === "Medium" ? 'active' : null}
+                    >
+                    Medium
+                    </button>
+                    <button 
+                        value="High" 
+                        onClick={this.handleMobility}
+                        className={this.state.buddy.mobility === "High" ? 'active' : null}
+                    >
+                    High
+                    </button>
                 </div>
                 {this.state.buddy.mobility ?
-                <button onClick={this.handleNext}>Next</button> :
+                <button onClick={this.handleNext} className="next-btn">Next</button> :
                 null}
             </form>
-            </>
+            </section>
         );
     }
 }

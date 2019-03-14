@@ -8,7 +8,7 @@ import Slider from "react-slick";
 
 class Time extends React.Component {
     state = {
-        timezone: 'America/Los_Angeles',
+        timezone: 'America/Chicago',
         selectedTimes: {
             Sunday: [],
             Monday: [],
@@ -18,28 +18,6 @@ class Time extends React.Component {
             Friday: [],
             Saturday: [],
         },
-        windowsize: ''
-    }
-
-    componentDidMount() {
-        this.getWindowSize()
-        window.addEventListener('resize', () => this.getWindowSize())
-    }
-
-    getWindowSize = () => {
-        if (window.innerWidth <= 550) {
-            this.setState({
-                windowsize: 'phone'
-            })
-        } else if (window.innerWidth <= 690 ) {
-            this.setState({
-                windowsize: 'tablet'
-            })
-        } else {
-            this.setState({
-                windowsize: 'desktop'
-            })
-        }
     }
 
     selectTime = (day, time, clicked) => {
@@ -78,14 +56,44 @@ class Time extends React.Component {
 
     render() {
         const settings = {
-            dots: true,
             infinite: true,
             speed: 500,
-            slidesToShow: 1,
+            slidesToShow: 7,
             slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 7,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 690,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 590,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 375,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }
+                },
+            ]
           };
         return (
             <section className="time">
+            
             <h2>What's a good time to complete the program?</h2>
             <p>To complete the beta, we are asking that people commit to one 30 minute time block once a week. Please choose what times work well for you.</p>
             <label htmlFor="timezone">Select Your Time Zone:</label>
@@ -93,30 +101,13 @@ class Time extends React.Component {
                 <option></option>
                 {moment.tz.names().map(name => <option key={name}>{name}</option>)}
             </select>
-            {/* {this.state.windowsize !== 'phone'  &&
-            <div className={this.state.windowsize === 'tablet' ? 'days tablet' : 'days'}>
-            {Object.keys(this.state.selectedTimes).map(day=><Day day={day} key={day} selectTime={this.selectTime} />)}
-            </div>} */}
+            
+            <div className='days slick-slider'>
             <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-        </Slider>
+            {Object.keys(this.state.selectedTimes).map(day=><Day day={day} key={day} selectTime={this.selectTime} />)}
+            </Slider>
+            </div>
+            
             <button onClick={this.handleNext} className="next-btn">Next</button>
             </section>
         );

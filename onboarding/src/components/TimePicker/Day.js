@@ -20,7 +20,7 @@ class Day extends React.Component {
     render() {
         const timeSlots = generateTimeslots(30, '06:00', '23:00')
         return(
-            <div>
+            <div className="slick-slide">
             <h3>{this.props.day}</h3>
             <div className='time-slots-container'>
                 <div 
