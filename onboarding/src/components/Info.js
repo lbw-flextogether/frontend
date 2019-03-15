@@ -44,38 +44,38 @@ class Info extends React.Component {
         return (
             <section className="info">
             <h2>Tell us a bit more...</h2>
-            <form>
+            <form onSubmit={this.handleNext}>
                 <label htmlFor="name">Your First Name</label>
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     placeholder="e.g. Janet"
                     name="name"
                     value={this.state.user.name}
                     onChange={this.handleChanges}
-                    id="name" 
+                    id="name"
                 />
                 <label htmlFor="email">Your Email Address</label>
-                <input 
-                    type="email" 
-                    placeholder="e.g. janet@google.com" 
+                <input
+                    type="email"
+                    placeholder="e.g. janet@google.com"
                     name="email"
                     value={this.state.user.email}
                     onChange={this.handleChanges}
                     id="email"
                 />
                 <label htmlFor="phone">Your Telephone Number</label>
-                <input 
-                    type="tel" 
+                <input
+                    type="tel"
                     placeholder="e.g. 555-867-5309"
                     name="phone"
                     value={this.state.user.phone}
-                    onChange={this.handleChanges} 
+                    onChange={this.handleChanges}
                     id="phone"
                 />
                 <label htmlFor="notification">I prefer to receive notifications by</label>
-                <select 
-                    value={this.state.user.notification} 
-                    onChange={this.handleChanges} 
+                <select
+                    value={this.state.user.notification}
+                    onChange={this.handleChanges}
                     name="notification"
                     id="notification"
                 >
@@ -85,22 +85,22 @@ class Info extends React.Component {
                 </select>
                 <p>Mobility Level (choose one)</p>
                 <div className="mobility-btns">
-                    <button 
-                        value="Low" 
+                    <button
+                        value="Low"
                         onClick={this.handleMobility}
                         className={this.state.user.mobility === "Low" ? 'active' : null}
                     >
                     Low
                     </button>
-                    <button 
-                        value="Medium" 
+                    <button
+                        value="Medium"
                         onClick={this.handleMobility}
                         className={this.state.user.mobility === "Medium" ? 'active' : null}
                     >
                     Medium
                     </button>
-                    <button 
-                        value="High" 
+                    <button
+                        value="High"
                         onClick={this.handleMobility}
                         className={this.state.user.mobility === "High" ? 'active' : null}
                     >
@@ -108,7 +108,7 @@ class Info extends React.Component {
                     </button>
                 </div>
                 { this.state.user.mobility ?
-                <button onClick={this.handleNext} className="next-btn">Next</button> :
+                <button type='submit' className="next-btn">Next</button> :
                 null }
             </form>
             </section>
