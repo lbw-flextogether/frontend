@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -9,7 +11,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family:'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #002047;
@@ -34,7 +36,7 @@ header {
 h2 {
   font-size: 3.5rem;
   text-align: center;
-  color: #002047
+  color: #002047;
 }
 
 p {
@@ -70,12 +72,12 @@ main {
 
 .welcome button {
   cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
-  color: #279CCF;
+  font-family: "Open Sans", sans-serif;
+  color: #279ccf;
   font-size: 1.8rem;
   font-weight: 700;
   padding: 9px 50px;
-  border: 4px solid #279CCF;
+  border: 4px solid #279ccf;
   border-radius: 10px;
   background-color: transparent;
   transition: background-color 300ms ease;
@@ -83,7 +85,7 @@ main {
 
 .welcome button:hover {
   color: white;
-  background-color: #279CCF;
+  background-color: #279ccf;
 }
 
 .welcome button:focus {
@@ -124,7 +126,7 @@ main {
   transition: background-color 300ms ease;
   border: 4px solid gray;
   border-radius: 15px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   color: gray;
@@ -140,12 +142,12 @@ main {
 }
 
 .start .active {
-  border-color: #279CCF;
-  color: #279CCF;
+  border-color: #279ccf;
+  color: #279ccf;
 }
 
 .start .active:hover {
-  background: #279CCF;
+  background: #279ccf;
   color: white;
 }
 
@@ -158,12 +160,12 @@ main {
 .next-btn {
   margin: 30px 0;
   cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
-  color: #279CCF;
+  font-family: "Open Sans", sans-serif;
+  color: #279ccf;
   font-size: 1.8rem;
   font-weight: 700;
   padding: 9px 50px;
-  border: 4px solid #279CCF;
+  border: 4px solid #279ccf;
   border-radius: 10px;
   background-color: transparent;
   transition: background-color 300ms ease;
@@ -171,7 +173,7 @@ main {
 
 .next-btn:hover {
   color: white;
-  background-color: #279CCF;
+  background-color: #279ccf;
 }
 
 .next-btn:focus {
@@ -201,7 +203,7 @@ main {
   width: 35%;
   height: 35px;
   padding: 5px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 15px;
@@ -219,7 +221,7 @@ main {
 
 .info form input:focus {
   outline: 0;
-  border-color: #279CCF;
+  border-color: #279ccf;
 }
 
 .info form input::placeholder {
@@ -230,7 +232,7 @@ main {
 .info form select {
   width: 35%;
   height: 35px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 1.6rem;
   padding: 0 5px;
@@ -248,7 +250,7 @@ main {
 
 .info form select:focus {
   outline: 0;
-  border-color: #279CCF;
+  border-color: #279ccf;
 }
 
 .info form p {
@@ -269,7 +271,7 @@ main {
   border-left: 1.5px solid gray;
   border-right: 1.5px solid gray;
   height: 35px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
   padding: 0 10.7%;
   transition: border-color 300ms ease;
@@ -277,12 +279,12 @@ main {
 }
 
 .info .mobility-btns button:focus {
- outline: 0;
+  outline: 0;
 }
 
 .info .mobility-btns button:hover {
   background-color: lightgray;
- }
+}
 
 .info .mobility-btns button:first-child {
   background: transparent;
@@ -294,7 +296,7 @@ main {
 
 .info .mobility-btns button:first-child:hover {
   background-color: lightgray;
- }
+}
 
 .info .mobility-btns button:last-child {
   background: transparent;
@@ -306,13 +308,13 @@ main {
 
 .info .mobility-btns button:last-child:hover {
   background-color: lightgray;
- }
+}
 
 .info .mobility-btns .active {
-  border-color: #279CCF;
+  border-color: #279ccf;
   color: white;
-  background-color: #279CCF;
- }
+  background-color: #279ccf;
+}
 
 .info .mobility-btns .active:hover {
   color: #002047;
@@ -320,9 +322,9 @@ main {
 }
 
 .info .mobility-btns .active:first-child {
-  border-color: #279CCF;
+  border-color: #279ccf;
   color: white;
-  background-color: #279CCF;
+  background-color: #279ccf;
 }
 
 .info .mobility-btns .active:first-child:hover {
@@ -331,9 +333,9 @@ main {
 }
 
 .info .mobility-btns .active:last-child {
-  border-color: #279CCF;
+  border-color: #279ccf;
   color: white;
-  background-color: #279CCF;
+  background-color: #279ccf;
 }
 
 .info .mobility-btns .active:last-child:hover {
@@ -362,7 +364,7 @@ main {
 .time select {
   width: 35%;
   height: 35px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 1.6rem;
   padding: 0 5px;
@@ -380,7 +382,7 @@ main {
 
 .time select:focus {
   outline: 0;
-  border-color: #279CCF;
+  border-color: #279ccf;
 }
 
 .days {
@@ -394,7 +396,7 @@ main {
 
 @media (max-width: 430px) {
   .days {
-    width: 80%
+    width: 80%;
   }
 }
 
@@ -405,7 +407,7 @@ main {
 
 .time-slots-container {
   overflow: hidden;
-  border: 3px solid #279CCF;
+  border: 3px solid #279ccf;
   border-radius: 10px;
   padding-bottom: 5px;
   width: 100%;
@@ -429,7 +431,7 @@ main {
   text-align: center;
   font-weight: 600;
   width: 100%;
-  border-bottom: 1px solid #279CCF;
+  border-bottom: 1px solid #279ccf;
 }
 
 .slot:hover {
@@ -439,12 +441,11 @@ main {
 .selected-slot {
   cursor: pointer;
   user-select: none;
-  background: #279CCF;
+  background: #279ccf;
   color: white;
-  border-bottom: 1px solid #279CCF;
+  border-bottom: 1px solid #279ccf;
   text-align: center;
 }
-
 
 .scroll {
   display: flex;
@@ -452,8 +453,8 @@ main {
   justify-content: space-around;
   font-weight: 600;
   font-size: 1.3rem;
-  border-top: 2px solid #279CCF;
-  color: #279CCF;
+  border-top: 2px solid #279ccf;
+  color: #279ccf;
   user-select: none;
 }
 
@@ -467,7 +468,7 @@ main {
   width: 95%;
 }
 
-.slick-slider { 
+.slick-slider {
   width: 95% !important;
   display: flex;
   justify-content: center;
@@ -478,9 +479,10 @@ main {
 }
 
 .slick-arrow::before {
-  color: #279CCF;
+  color: #279ccf;
 }
-.slick-active, .slick-current {
+.slick-active,
+.slick-current {
   margin: 0 auto;
 }
 .slick-slide {
@@ -538,7 +540,7 @@ main {
 .confirmed-time {
   text-align: center;
   font-size: 3rem;
-  color: #279CCF;
+  color: #279ccf;
 }
 
 .manual-entry {
@@ -557,7 +559,7 @@ main {
   width: 200px;
   height: 35px;
   padding: 5px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 600;
   border: 3px solid gray;
@@ -568,7 +570,7 @@ main {
 
 .manual-entry input:focus {
   outline: 0;
-  border-color: #279CCF;
+  border-color: #279ccf;
 }
 
 .manual-entry input::placeholder {
@@ -579,7 +581,7 @@ main {
 .manual-entry select {
   width: 200px;
   height: 35px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 1.6rem;
   padding: 0 5px;
@@ -591,7 +593,7 @@ main {
 
 .manual-entry select:focus {
   outline: 0;
-  border-color: #279CCF;
+  border-color: #279ccf;
 }
 
 .manual-entry p {
