@@ -9,7 +9,7 @@ const Start = ({ addRole, history }) => {
 
   useEffect(() => {
     if (role !== null) addRole(role);
-  }, [role]);
+  }, [role, addRole]);
 
   const handleRole = e => {
     e.preventDefault();
