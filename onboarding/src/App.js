@@ -16,34 +16,27 @@ import Manual from "./components/Manual";
 import EmailConfirm from "./components/EmailConfirm";
 import "./assets/styles/App.css";
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <>
-          <Header />
-          <main>
-            <div className="appContainer">
-              <Route exact path="/" component={Welcome} />
-              <Route path="/start" component={Start} />
-              <Route path="/info" component={Info} />
-              <Route path="/time" component={Time} />
-              <Route path="/buddyinfo" component={BuddyInfo} />
-              <Route path="/complete" component={Complete} />
-              <Route exact path="/invite/:id" component={BuddyVerify} />
-              <Route path="/invite/:id/confirm" component={BuddyConfirm} />
-              <Route
-                path="/invite/:id/buddycomplete"
-                component={BuddyComplete}
-              />
-              <Route path="/invite/:id/manual" component={Manual} />
-              <Route path="/verify/:id" component={EmailConfirm} />
-            </div>
-          </main>
-        </>
-      </Router>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Router>
+      <>
+        <Header />
+        <main className="appContainer">
+          <Route exact path="/" component={Welcome} />
+          <Route path="/start" component={Start} />
+          <Route path="/info" component={Info} />
+          <Route path="/time" component={Time} />
+          <Route path="/buddyinfo" component={BuddyInfo} />
+          <Route path="/complete" component={Complete} />
+          <Route exact path="/invite/:id" component={BuddyVerify} />
+          <Route path="/invite/:id/confirm" component={BuddyConfirm} />
+          <Route path="/invite/:id/buddycomplete" component={BuddyComplete} />
+          <Route path="/invite/:id/manual" component={Manual} />
+          <Route path="/verify/:id" component={EmailConfirm} />
+        </main>
+      </>
+    </Router>
+  );
+};
 
 export default App;
