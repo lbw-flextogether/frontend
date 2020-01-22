@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Day from "./TimePicker/Day";
 import moment from "moment-timezone";
 import { connect } from "react-redux";
@@ -20,7 +20,7 @@ const Time = ({ addTimes, history }) => {
   };
   const [state, setState] = useState(initState);
 
-  const selectTime = (day, time, clicked) => {
+  const addTime = (day, time, clicked) => {
     if (!clicked) {
       setState({
         ...state,
@@ -40,6 +40,8 @@ const Time = ({ addTimes, history }) => {
     }
   };
 
+  const selectTime = useCallback(addTime, []);
+
   const handleTimeZone = e => {
     setState({
       ...state,
@@ -58,6 +60,7 @@ const Time = ({ addTimes, history }) => {
     addTimes(time, state.timezone);
     history.push("/buddyinfo");
   };
+
   const settings = {
     infinite: true,
     speed: 500,

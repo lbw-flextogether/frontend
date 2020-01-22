@@ -1,40 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-class Slot extends React.Component {
-  state = {
-    clicked: false
+const Slot = ({ day, slot, selectTime }) => {
+  const [clicked, setClicked] = useState(false);
+
+  useEffect(() => {
+    selectTime(day, slot, clicked);
+  }, [clicked, day, slot, selectTime]);
+
+  const handleClick = () => {
+    setClicked(!clicked);
   };
 
-  handleClick = () => {
-    this.setState(
-      {
-        clicked: !this.state.clicked
-      },
-      () => {
-        this.props.selectTime(
-          this.props.day,
-          this.props.slot,
-          this.state.clicked
-        );
-      }
-    );
-  };
-
-  render() {
-    return (
-      <div
-        onMouseDown={() => this.handleClick()}
-        onMouseOver={e => {
-          if (e.buttons === 1) {
-            this.handleClick();
-          }
-        }}
-        className={!this.state.clicked ? "slot" : "slot selected-slot"}
-      >
-        {this.props.slot}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      onMouseDown={() => handleClick()}
+      onMouseOver={e => {
+        if (e.buttons === 1) {
+          handleClick();
+        }
+      }}
+      className={!clicked ? "slot" : "slot selected-slot"}
+    >
+      {slot}
+    </div>
+  );
+};
 
 export default Slot;
