@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Welcome = props => {
+const Welcome = ({ history }) => {
   const handleBtn = e => {
     e.preventDefault();
-    props.history.push("/start");
+    history.push("/start");
   };
   return (
     <section className="welcome">
@@ -11,6 +12,10 @@ const Welcome = props => {
       <button onClick={handleBtn}>Start</button>
     </section>
   );
+};
+
+Welcome.propTypes = {
+  history: PropTypes.func.isRequired
 };
 
 export default Welcome;
