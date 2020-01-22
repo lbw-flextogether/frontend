@@ -8,7 +8,7 @@ const Start = ({ addRole, history }) => {
   const [role, setRole] = useState(null);
 
   useEffect(() => {
-    addRole(role);
+    if (role !== null) addRole(role);
   }, [role]);
 
   const handleRole = e => {
